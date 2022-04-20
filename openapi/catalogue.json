@@ -22,27 +22,6 @@
         "application/json;charset=UTF-8"
     ],
     "paths": {
-        "/catalogue": {
-            "get": {
-                "description": "Catalogue API",
-                "operationId": "List catalogue",
-                "produces": [
-                    "application/json;charset=UTF-8"
-                ],
-                "parameters": [],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "type": "array",
-                            "items": {
-                                "$ref": "#/definitions/Listresponse"
-                            }
-                        }
-                    }
-                }
-            }
-        },
         "/catalogue/{id}": {
             "get": {
                 "description": "",
