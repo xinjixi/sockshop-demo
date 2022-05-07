@@ -10,8 +10,7 @@
       "email": "tom@test.com"
     },
     "license": {
-      "name": "MIT",
-      "url": "http://github.com/gruntjs/grunt/blob/master/LICENSE-MIT"
+      "name": "MIT"
     }
   },
   "tags": [
