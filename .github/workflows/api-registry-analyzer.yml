@@ -28,4 +28,4 @@ jobs:
       - name: Run a s
         run: |
           echo Analyze spec against API guidelines
-          ./.bin/apiregistryctl analyze openapi/spec2.json
+          ./.bin/apiregistryctl analyze openapi/catalogue.json
