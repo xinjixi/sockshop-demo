@@ -6,7 +6,7 @@ name: demo CI
 on:
   # Triggers the workflow on push or pull request events but only for the master branch
   push:
-    branches: [ master, released ]
+    # branches: [ master, released ]
     # v0.1-1
     tags: [v*.*-*]
 
@@ -55,15 +55,8 @@ jobs:
           format: "csv"
       - name: Diff with latest
         run: |
-          mapfile -d ',' -t added_modified_files < <(printf '%s,' '${{ steps.files.outputs.added_modified }}')
-          for added_modified_file in "${added_modified_files[@]}"; do
-            if [[ $added_modified_file == ${SPEC_FOLDER}* ]]; then
-              service="${added_modified_file#*/}"
-              service="${service%%.*}"
-              echo "Diffing ${added_modified_file} for service ${service}"
-              ./.bin/apiregistryctl diff ${added_modified_file} -s ${service} -o text
-            fi
-          done
+          echo Diff catalogue spec
+          ./.bin/apiregistryctl diff openapi/catalogue.json -s catalogue --latest -o text
 
   upload:
     # The type of runner that the job will run on
