@@ -3,7 +3,7 @@
   "info": {
     "version": "0.0.0",
     "title": "Catalogue resources",
-    "description": "catalogue",
+    "description": "catalogue with blacklist",
     "contact": {
       "name": "Tom",
       "url": "http://test.com",
@@ -242,7 +242,56 @@
               }
             },
             "schema": {
-              "$ref": "#/definitions/Getanitemresponse"
+              "type": "object"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Sample"],
+        "description": "delete",
+        "operationId": "delete-an-item",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "produces": ["application/json; charset=UTF-8"],
+        "parameters": [
+          {
+            "description": "catalogue id",
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "x-example": "a0a4f044-b040-410d-8ead-4de0446aec7e"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "headers": {
+              "TRACKINGID": {
+                "type": "string"
+              },
+              "Date": {
+                "type": "string"
+              },
+              "Link": {
+                "type": "string"
+              },
+              "ETag": {
+                "type": "string"
+              },
+              "If-Match": {
+                "type": "string"
+              },
+              "If-None-Match": {
+                "type": "string"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/Error"
             }
           },
           "401": {
