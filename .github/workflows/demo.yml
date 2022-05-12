@@ -89,4 +89,4 @@ jobs:
       - name: Upload specs
         run: |
           echo Upload a spec to api registry
-          ./.bin/apiregistryctl uploadspec openapi/catalogue.json -s catalogue --version "${{ env.RELEASE_VERSION }}" --revision "${{ env.RELEASE_REVISON }}"
+          ./.bin/apiregistryctl service uploadspec openapi/catalogue.json -s catalogue --version "${{ env.RELEASE_VERSION }}" --revision "${{ env.RELEASE_REVISON }}"
