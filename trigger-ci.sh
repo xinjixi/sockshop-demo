@@ -1,4 +1,5 @@
 #! /bin/bash
+set -x
 
 tag=v0.1-1
 
