@@ -49,10 +49,6 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
 
-      - id: files
-        uses: jitterbit/get-changed-files@v1
-        with:
-          format: "csv"
       - name: Diff with latest
         run: |
           echo Diff catalogue spec
