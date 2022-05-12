@@ -12,16 +12,8 @@ v0.1-rev2: fix all the issues in v0.1-rev1
 
 ## Trigger workflow
 
-* Delete all the tags to avoid conflicts
+* Change the tag in ./trigger-ci.sh
+* Run the shell script
 ```
-git tag -l | xargs -n 1 git push --delete origin
-git tag | xargs git tag -d
-Or just remove some specfic one:
-git push origin --delete v0.1-1
-```
-* Trigger workflow bug tag
-```
-// version 0.1 revision 1
-git tag v0.1-1
-git push --tags
+./trigger-ci.sh
 ```
