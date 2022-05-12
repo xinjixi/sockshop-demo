@@ -7,7 +7,8 @@ on:
   # Triggers the workflow on push or pull request events but only for the master branch
   push:
     branches: [ master, released ]
-    tags: [v*.*.*-*]
+    # v0.1-1
+    tags: [v*.*-*]
 
 
   # Allows you to run this workflow manually from the Actions tab
@@ -96,4 +97,4 @@ jobs:
       - name: Upload specs
         run: |
           echo Upload a spec to api registry
-          ./.bin/apiregistryctl service uploadspec openapi/spec2.json --service-id 2cc7a42b-a4c6-11ec-9bda-06d35fb06cae --version "${{ env.RELEASE_VERSION }}" --revision "${{ env.RELEASE_REVISON }}"
+          ./.bin/apiregistryctl uploadspec openapi/catalogue.json -s catalogue --version "${{ env.RELEASE_VERSION }}" --revision "${{ env.RELEASE_REVISON }}"
