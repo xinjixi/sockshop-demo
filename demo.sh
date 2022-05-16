@@ -33,7 +33,7 @@ apiregistryctl -H "$host" analyze v0.0-rev1/catalogue.json
 echo "## Analyze v0.0-rev2 catalogue spec which is the perfect spec fixed all the issues"
 apiregistryctl -H "$host" analyze v0.0-rev2/catalogue.json
 
-echo "## The following should be part of pipeline"
+echo "## The following should be part of pipeline, copy the content to openapi folder, commit and push tag will trigger CI"
 echo "## Analyze v0.1-rev1 catalogue spec which add serveral violations like respose code, inclusive language, etc"
 apiregistryctl -H "$host" analyze v0.1-rev1/catalogue.json
 
