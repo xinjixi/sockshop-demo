@@ -12,7 +12,7 @@ v0.1-rev2: fix all the issues in v0.1-rev1
 
 ## Trigger workflow
 
-1. Change the catalogue.json in openapi folder by copying the same files in other version folders.
+1. Change the catalogue.json in openapi folder by copying the same files in other version folders. This add some violations.
 ```
 cp v0.1-rev1/catalogue.json openapi/
 ```
@@ -26,7 +26,7 @@ git add openapi/catalogue.json
 git commit -m "add delete catalogue api"
 git push origin master
 ```
-4. Run the shell script, to trigger upload. UI will show the result as well.
+4. Run the shell script. This will push new git tag to trigger upload. UI will show the result as well.
 ```
 ./trigger-ci-upload.sh v0.1-1
 ```
@@ -44,10 +44,11 @@ git add openapi/catalogue.json
 git commit -m "fix catalogue api"
 git push origin master
 ```
-8. Run the shell script, to trigger upload. UI will show the result as well.
+8. Run the shell script. This will push new git tag to trigger upload. UI will show the result as well.
 ```
 ./trigger-ci-upload.sh v0.1-2
 ```
+9. From the UI, then no violations will be found.
 
 ## Useful commands
 
