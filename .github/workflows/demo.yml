@@ -48,6 +48,7 @@ jobs:
         run: |
           ls /home/runner/work/sockshop-demo/sockshop-demo/.github/actions && pwd
 
+      - uses: actions/checkout@v3
       - name: Upload spec
         # if: startsWith(github.ref, 'refs/tags/v')
         uses: ./.github/actions/action@refs/heads/master
