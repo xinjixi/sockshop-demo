@@ -19,3 +19,10 @@ v0.1-rev2: fix all the issues in v0.1-rev1
 ```
 ./trigger-ci.sh
 ```
+
+## Useful commands
+
+
+```
+apiregistryctl diff v0.1-rev1/catalogue.json -s catalogue --version 0.0 --revision 2 -o text
+```
