@@ -46,7 +46,7 @@ jobs:
 
       - name: Upload spec
         # if: startsWith(github.ref, 'refs/tags/v')
-        uses: actions/upload-composite-action
+        uses: actions/upload-composite-action@master
 
   upload:
     # The type of runner that the job will run on
