@@ -26,9 +26,9 @@ git add openapi/catalogue.json
 git commit -m "add delete catalogue api"
 git push origin master
 ```
-4. Change the tag in ./trigger-ci.sh to v0.1-1, run the shell script, to trigger upload. UI will show the result as well.
+4. Run the shell script, to trigger upload. UI will show the result as well.
 ```
-./trigger-ci.sh
+./trigger-ci-upload.sh v0.1-1
 ```
 5. Fix the broken spec by coping the one from v0.1-rev2.
 ```
@@ -44,9 +44,9 @@ git add openapi/catalogue.json
 git commit -m "fix catalogue api"
 git push origin master
 ```
-8. Change the tag in ./trigger-ci.sh to v0.1-2, run the shell script, to trigger upload. UI will show the result as well.
+8. Run the shell script, to trigger upload. UI will show the result as well.
 ```
-./trigger-ci.sh
+./trigger-ci-upload.sh v0.1-2
 ```
 
 ## Useful commands
