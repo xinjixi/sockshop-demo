@@ -318,7 +318,7 @@
       },
       "delete": {
         "tags": ["Sample"],
-        "description": "delete the item in the blacklist",
+        "description": "delete",
         "operationId": "delete-an-item",
         "security": [
           {
@@ -358,6 +358,75 @@
               "If-None-Match": {
                 "type": "string"
               }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "headers": {
+              "TRACKINGID": {
+                "type": "string"
+              },
+              "Date": {
+                "type": "string"
+              },
+              "ETag": {
+                "type": "string"
+              },
+              "If-Match": {
+                "type": "string"
+              },
+              "If-None-Match": {
+                "type": "string"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "headers": {
+              "TRACKINGID": {
+                "type": "string"
+              },
+              "Date": {
+                "type": "string"
+              },
+              "ETag": {
+                "type": "string"
+              },
+              "If-Match": {
+                "type": "string"
+              },
+              "If-None-Match": {
+                "type": "string"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "headers": {
+              "TRACKINGID": {
+                "type": "string"
+              },
+              "Date": {
+                "type": "string"
+              },
+              "ETag": {
+                "type": "string"
+              },
+              "If-Match": {
+                "type": "string"
+              },
+              "If-None-Match": {
+                "type": "string"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/Error"
             }
           }
         }

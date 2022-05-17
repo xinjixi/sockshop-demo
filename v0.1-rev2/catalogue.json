@@ -780,7 +780,8 @@
       "type": "object",
       "properties": {
         "id": {
-          "type": "string"
+          "type": "integer",
+          "format": "int64"
         },
         "name": {
           "type": "string"
@@ -819,7 +820,7 @@
         "tags"
       ],
       "example": {
-        "id": "id",
+        "id": 123,
         "name": "name1",
         "description": "desc",
         "imageUrls": ["https://abc.com/1.png"],
