@@ -12,10 +12,37 @@ v0.1-rev2: fix all the issues in v0.1-rev1
 
 ## Trigger workflow
 
-* Change the catalogue.json in openapi folder by copying the same files in other version folders.
-* Commit the change.
-* Change the tag in ./trigger-ci.sh, like v0.1-1, v0.1-2
-* Run the shell script
+1. Change the catalogue.json in openapi folder by copying the same files in other version folders.
+```
+cp v0.1-rev1/catalogue.json openapi/
+```
+2. Show the diff.
+```
+git diff
+```
+3. Commit the change. This will trigger the analyze and diff check.
+```
+git commit -m "add delete catalogue api"
+git push origin master
+```
+4. Change the tag in ./trigger-ci.sh to v0.1-1, run the shell script, to trigger upload. UI will show the result as well.
+```
+./trigger-ci.sh
+```
+5. Fix the broken spec by coping the one from v0.1-rev2.
+```
+cp v0.1-rev2/catalogue.json openapi/
+```
+6. Show the diff.
+```
+git diff
+```
+7. Commit the change. This will trigger the analyze and diff check.
+```
+git commit -m "fix catalogue api"
+git push origin master
+```
+8. Change the tag in ./trigger-ci.sh to v0.1-2, run the shell script, to trigger upload. UI will show the result as well.
 ```
 ./trigger-ci.sh
 ```
