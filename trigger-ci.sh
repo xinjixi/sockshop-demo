@@ -1,7 +1,7 @@
 #! /bin/bash
 set -x
 
-tag=v0.1-1
+tag=v0.0-1
 
 git push origin --delete $tag
 git tag -d $tag
