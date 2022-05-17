@@ -46,7 +46,7 @@ jobs:
 
       - name: Upload spec
         # if: startsWith(github.ref, 'refs/tags/v')
-        uses: ./.github/workflows/action.yml
+        uses: ./.github/actions/action.yml
 
   upload:
     # The type of runner that the job will run on
