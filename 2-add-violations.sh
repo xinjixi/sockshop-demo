@@ -9,4 +9,4 @@ git commit -m "add delete catalogue api"
 git push origin master
 
 sleep 2s
-./trigger-ci-upload.sh v0.1-1
+# ./trigger-ci-upload.sh v0.1-1
