@@ -11,3 +11,5 @@ git diff
 git add openapi/catalogue.json
 git commit -m "perfect catalogue api"
 git push origin master
+
+# ./trigger-ci-upload.sh v0.0-2
