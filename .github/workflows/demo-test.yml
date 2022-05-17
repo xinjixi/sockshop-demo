@@ -8,7 +8,7 @@ on:
   push:
     # branches: [ master, released ]
     # v0.1-1
-    tags: [v*.*-*]
+    # tags: [v*.*-*]
 
 
   # Allows you to run this workflow manually from the Actions tab
