@@ -318,7 +318,7 @@
       },
       "delete": {
         "tags": ["Sample"],
-        "description": "delete",
+        "description": "delete the item in the blacklist",
         "operationId": "delete-an-item",
         "security": [
           {
@@ -358,75 +358,6 @@
               "If-None-Match": {
                 "type": "string"
               }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "headers": {
-              "TRACKINGID": {
-                "type": "string"
-              },
-              "Date": {
-                "type": "string"
-              },
-              "ETag": {
-                "type": "string"
-              },
-              "If-Match": {
-                "type": "string"
-              },
-              "If-None-Match": {
-                "type": "string"
-              }
-            },
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "headers": {
-              "TRACKINGID": {
-                "type": "string"
-              },
-              "Date": {
-                "type": "string"
-              },
-              "ETag": {
-                "type": "string"
-              },
-              "If-Match": {
-                "type": "string"
-              },
-              "If-None-Match": {
-                "type": "string"
-              }
-            },
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "default": {
-            "description": "unexpected error",
-            "headers": {
-              "TRACKINGID": {
-                "type": "string"
-              },
-              "Date": {
-                "type": "string"
-              },
-              "ETag": {
-                "type": "string"
-              },
-              "If-Match": {
-                "type": "string"
-              },
-              "If-None-Match": {
-                "type": "string"
-              }
-            },
-            "schema": {
-              "$ref": "#/definitions/Error"
             }
           }
         }
@@ -780,7 +711,8 @@
       "type": "object",
       "properties": {
         "id": {
-          "type": "string"
+          "type": "integer",
+          "format": "int64"
         },
         "name": {
           "type": "string"
@@ -819,7 +751,7 @@
         "tags"
       ],
       "example": {
-        "id": "id",
+        "id": 123,
         "name": "name1",
         "description": "desc",
         "imageUrls": ["https://abc.com/1.png"],
