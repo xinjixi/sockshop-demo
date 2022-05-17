@@ -1,3 +1,5 @@
+on:
+  workflow_call:
 name: upload
 runs:
   using: "composite"
@@ -7,8 +9,10 @@ runs:
 
     # Set tag env
     - name: Set tag env
+      shell: bash
       run: echo "RELEASE_TAG=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
     - name: Echo tag env
+      shell: bash
       run: |
         echo ${{ env.RELEASE_TAG }}
 
@@ -16,6 +20,7 @@ runs:
     - id: parse-tags
       name: Parse tags
       uses: actions/github-script@v6
+      shell: bash
       with:
         script: |
           const items = "${{ env.RELEASE_TAG }}".split('-')
@@ -23,12 +28,15 @@ runs:
           core.setOutput('version', items[0])
           core.setOutput('revision', items[1])
     - name: Set version env
+      shell: bash
       run: echo "RELEASE_VERSION=${{steps.parse-tags.outputs.version}}" >> $GITHUB_ENV
     - name: Set revision env
+      shell: bash
       run: echo "RELEASE_REVISON=${{steps.parse-tags.outputs.revision}}" >> $GITHUB_ENV
 
     # Runs uploading a spec to API registry
     # - name: Upload specs
+      # shell: bash
     #   run: |
     #     echo Upload a spec to api registry
     #     ./.bin/apiregistryctl service uploadspec openapi/catalogue.json -s catalogue --version "${{ env.RELEASE_VERSION }}" --revision "${{ env.RELEASE_REVISON }}"
