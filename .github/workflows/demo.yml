@@ -42,7 +42,8 @@ jobs:
         if: always()
         run: |
           echo Diff catalogue spec
-          ./.bin/apiregistryctl diff openapi/catalogue.json -s catalogue --latest -o text
+          ./.bin/apiregistryctl diff openapi/catalogue.json -s catalogue --latest -o text --fail-on-incompatible
+
 
   upload:
     # The type of runner that the job will run on
