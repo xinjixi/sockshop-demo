@@ -44,10 +44,10 @@ jobs:
           echo Diff catalogue spec
           ./.bin/apiregistryctl diff openapi/catalogue.json -s catalogue --latest -o text --fail-on-incompatible
 
-      - uses: actions/checkout@v3
+      # - uses: actions/checkout@v3
       - name: Upload spec
         # if: startsWith(github.ref, 'refs/tags/v')
-        uses: ./.github/actions/action.yml
+        uses: ./.github/actions/upload
 
   upload:
     # The type of runner that the job will run on
