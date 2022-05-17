@@ -1,35 +1,197 @@
 {
   "swagger": "2.0",
   "info": {
-    "version": "0.0.0",
-    "title": "Service to manage product catalogue",
-    "description": "<whitelist>",
+    "version": "0.0",
+    "title": "Catalogue resources",
+    "description": "catalogue",
+    "contact": {
+      "name": "Tom",
+      "url": "http://test.com",
+      "email": "tom@test.com"
+    },
     "license": {
       "name": "MIT",
       "url": "http://github.com/gruntjs/grunt/blob/master/LICENSE-MIT"
     }
   },
+  "tags": [
+    {
+      "description": "This is a sample tag.",
+      "name": "Sample"
+    }
+  ],
   "host": "catalogue",
-  "basePath": "/",
-  "securityDefinitions": {},
-  "schemes": ["http"],
+  "basePath": "/v1",
+  "securityDefinitions": {
+    "BearerAuth": {
+      "type": "oauth2",
+      "flow": "accessCode",
+      "description": "BearerAuth",
+      "authorizationUrl": "https://example.com/oauth/authorize",
+      "tokenUrl": "https://example.com/oauth/token",
+      "scopes": {
+        "read": "Grants read access",
+        "write": "Grants write access",
+        "admin": "Grants read and write access to administrative information"
+      }
+    }
+  },
+  "schemes": ["https"],
   "consumes": ["application/json;charset=UTF-8"],
   "produces": ["application/json;charset=UTF-8"],
   "paths": {
     "/catalogue": {
       "get": {
+        "tags": ["Sample"],
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
         "description": "Catalogue API",
-        "operationId": "List catalogue",
+        "operationId": "List-catalogue",
         "produces": ["application/json;charset=UTF-8"],
-        "parameters": [],
+        "parameters": [
+          {
+            "description": "query",
+            "in": "query",
+            "name": "max",
+            "type": "number"
+          },
+          {
+            "description": "query",
+            "in": "query",
+            "name": "offset",
+            "type": "number"
+          },
+          {
+            "description": "query",
+            "in": "query",
+            "name": "sort",
+            "type": "string"
+          },
+          {
+            "description": "query",
+            "in": "query",
+            "name": "order",
+            "type": "string"
+          }
+        ],
         "responses": {
           "200": {
-            "description": "",
-            "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/Listresponse"
+            "description": "OK",
+            "headers": {
+              "TRACKINGID": {
+                "type": "string"
+              },
+              "Date": {
+                "type": "string"
+              },
+              "Link": {
+                "type": "string"
+              },
+              "ETag": {
+                "type": "string"
+              },
+              "If-Match": {
+                "type": "string"
+              },
+              "If-None-Match": {
+                "type": "string"
               }
+            },
+            "schema": {
+              "type": "object",
+              "properties": {
+                "items": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Listresponse"
+                  }
+                }
+              },
+              "example": {
+                "item": [
+                  {
+                    "id": "id",
+                    "name": "name1",
+                    "description": "desc",
+                    "imageUrl": ["https://abc.com/1.png"],
+                    "price": 10,
+                    "count": 2,
+                    "tag": ["tag1"]
+                  }
+                ]
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "headers": {
+              "TRACKINGID": {
+                "type": "string"
+              },
+              "Date": {
+                "type": "string"
+              },
+              "ETag": {
+                "type": "string"
+              },
+              "If-Match": {
+                "type": "string"
+              },
+              "If-None-Match": {
+                "type": "string"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "headers": {
+              "TRACKINGID": {
+                "type": "string"
+              },
+              "Date": {
+                "type": "string"
+              },
+              "ETag": {
+                "type": "string"
+              },
+              "If-Match": {
+                "type": "string"
+              },
+              "If-None-Match": {
+                "type": "string"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "headers": {
+              "TRACKINGID": {
+                "type": "string"
+              },
+              "Date": {
+                "type": "string"
+              },
+              "ETag": {
+                "type": "string"
+              },
+              "If-Match": {
+                "type": "string"
+              },
+              "If-None-Match": {
+                "type": "string"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/Error"
             }
           }
         }
@@ -37,11 +199,18 @@
     },
     "/catalogue/{id}": {
       "get": {
-        "description": "<sanity>",
-        "operationId": "Get an item",
+        "tags": ["Sample"],
+        "description": "get",
+        "operationId": "Get-an-item",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
         "produces": ["application/json; charset=UTF-8"],
         "parameters": [
           {
+            "description": "catalogue id",
             "name": "id",
             "in": "path",
             "required": true,
@@ -51,9 +220,98 @@
         ],
         "responses": {
           "200": {
-            "description": "",
+            "description": "OK",
+            "headers": {
+              "TRACKINGID": {
+                "type": "string"
+              },
+              "Date": {
+                "type": "string"
+              },
+              "Link": {
+                "type": "string"
+              },
+              "ETag": {
+                "type": "string"
+              },
+              "If-Match": {
+                "type": "string"
+              },
+              "If-None-Match": {
+                "type": "string"
+              }
+            },
             "schema": {
               "$ref": "#/definitions/Getanitemresponse"
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "headers": {
+              "TRACKINGID": {
+                "type": "string"
+              },
+              "Date": {
+                "type": "string"
+              },
+              "ETag": {
+                "type": "string"
+              },
+              "If-Match": {
+                "type": "string"
+              },
+              "If-None-Match": {
+                "type": "string"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "headers": {
+              "TRACKINGID": {
+                "type": "string"
+              },
+              "Date": {
+                "type": "string"
+              },
+              "ETag": {
+                "type": "string"
+              },
+              "If-Match": {
+                "type": "string"
+              },
+              "If-None-Match": {
+                "type": "string"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "headers": {
+              "TRACKINGID": {
+                "type": "string"
+              },
+              "Date": {
+                "type": "string"
+              },
+              "ETag": {
+                "type": "string"
+              },
+              "If-Match": {
+                "type": "string"
+              },
+              "If-None-Match": {
+                "type": "string"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/Error"
             }
           }
         }
@@ -61,15 +319,135 @@
     },
     "/catalogue/size": {
       "get": {
-        "description": "",
-        "operationId": "Get size",
+        "description": "Get size",
+        "operationId": "Get-size",
+        "tags": ["Sample"],
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
         "produces": ["application/json;charset=UTF-8"],
-        "parameters": [],
+        "parameters": [
+          {
+            "description": "query",
+            "in": "query",
+            "name": "max",
+            "type": "number"
+          },
+          {
+            "description": "query",
+            "in": "query",
+            "name": "offset",
+            "type": "number"
+          },
+          {
+            "description": "query",
+            "in": "query",
+            "name": "sort",
+            "type": "string"
+          },
+          {
+            "description": "query",
+            "in": "query",
+            "name": "order",
+            "type": "string"
+          }
+        ],
         "responses": {
           "200": {
-            "description": "",
+            "description": "OK",
+            "headers": {
+              "TRACKINGID": {
+                "type": "string"
+              },
+              "Date": {
+                "type": "string"
+              },
+              "Link": {
+                "type": "string"
+              },
+              "ETag": {
+                "type": "string"
+              },
+              "If-Match": {
+                "type": "string"
+              },
+              "If-None-Match": {
+                "type": "string"
+              }
+            },
             "schema": {
               "$ref": "#/definitions/Getsizeresponse"
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "headers": {
+              "TRACKINGID": {
+                "type": "string"
+              },
+              "Date": {
+                "type": "string"
+              },
+              "ETag": {
+                "type": "string"
+              },
+              "If-Match": {
+                "type": "string"
+              },
+              "If-None-Match": {
+                "type": "string"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "headers": {
+              "TRACKINGID": {
+                "type": "string"
+              },
+              "Date": {
+                "type": "string"
+              },
+              "ETag": {
+                "type": "string"
+              },
+              "If-Match": {
+                "type": "string"
+              },
+              "If-None-Match": {
+                "type": "string"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "headers": {
+              "TRACKINGID": {
+                "type": "string"
+              },
+              "Date": {
+                "type": "string"
+              },
+              "ETag": {
+                "type": "string"
+              },
+              "If-Match": {
+                "type": "string"
+              },
+              "If-None-Match": {
+                "type": "string"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/Error"
             }
           }
         }
@@ -77,15 +455,135 @@
     },
     "/tags": {
       "get": {
-        "description": "",
+        "description": "OK",
         "operationId": "List_",
+        "tags": ["Sample"],
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
         "produces": ["application/json;charset=UTF-8"],
-        "parameters": [],
+        "parameters": [
+          {
+            "description": "query",
+            "in": "query",
+            "name": "max",
+            "type": "number"
+          },
+          {
+            "description": "query",
+            "in": "query",
+            "name": "offset",
+            "type": "number"
+          },
+          {
+            "description": "query",
+            "in": "query",
+            "name": "sort",
+            "type": "string"
+          },
+          {
+            "description": "query",
+            "in": "query",
+            "name": "order",
+            "type": "string"
+          }
+        ],
         "responses": {
           "200": {
-            "description": "",
+            "description": "OK",
+            "headers": {
+              "TRACKINGID": {
+                "type": "string"
+              },
+              "Date": {
+                "type": "string"
+              },
+              "Link": {
+                "type": "string"
+              },
+              "ETag": {
+                "type": "string"
+              },
+              "If-Match": {
+                "type": "string"
+              },
+              "If-None-Match": {
+                "type": "string"
+              }
+            },
             "schema": {
               "$ref": "#/definitions/Listresponse3"
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "headers": {
+              "TRACKINGID": {
+                "type": "string"
+              },
+              "Date": {
+                "type": "string"
+              },
+              "ETag": {
+                "type": "string"
+              },
+              "If-Match": {
+                "type": "string"
+              },
+              "If-None-Match": {
+                "type": "string"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "headers": {
+              "TRACKINGID": {
+                "type": "string"
+              },
+              "Date": {
+                "type": "string"
+              },
+              "ETag": {
+                "type": "string"
+              },
+              "If-Match": {
+                "type": "string"
+              },
+              "If-None-Match": {
+                "type": "string"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "headers": {
+              "TRACKINGID": {
+                "type": "string"
+              },
+              "Date": {
+                "type": "string"
+              },
+              "ETag": {
+                "type": "string"
+              },
+              "If-Match": {
+                "type": "string"
+              },
+              "If-None-Match": {
+                "type": "string"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/Error"
             }
           }
         }
@@ -93,6 +591,22 @@
     }
   },
   "definitions": {
+    "Error": {
+      "example": {
+        "code": 2,
+        "message": "internal server"
+      },
+      "properties": {
+        "code": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "message": {
+          "type": "string"
+        }
+      },
+      "required": ["code", "message"]
+    },
     "Listresponse": {
       "title": "List response",
       "type": "object",
@@ -106,7 +620,7 @@
         "description": {
           "type": "string"
         },
-        "imageUrl": {
+        "imageUrls": {
           "type": "array",
           "items": {
             "type": "string"
@@ -120,7 +634,7 @@
           "type": "integer",
           "format": "int32"
         },
-        "tag": {
+        "tags": {
           "type": "array",
           "items": {
             "type": "string"
@@ -131,11 +645,20 @@
         "id",
         "name",
         "description",
-        "imageUrl",
+        "imageUrls",
         "price",
         "count",
-        "tag"
-      ]
+        "tags"
+      ],
+      "example": {
+        "id": "id",
+        "name": "name1",
+        "description": "desc",
+        "imageUrls": ["https://abc.com/1.png"],
+        "price": 10,
+        "count": 2,
+        "tags": ["tag1"]
+      }
     },
     "Getanitemresponse": {
       "title": "Get an item response",
@@ -150,7 +673,7 @@
         "description": {
           "type": "string"
         },
-        "imageUrl": {
+        "imageUrls": {
           "type": "array",
           "items": {
             "type": "string"
@@ -164,7 +687,7 @@
           "type": "integer",
           "format": "int32"
         },
-        "tag": {
+        "tags": {
           "type": "array",
           "items": {
             "type": "string"
@@ -175,11 +698,20 @@
         "id",
         "name",
         "description",
-        "imageUrl",
+        "imageUrls",
         "price",
         "count",
-        "tag"
-      ]
+        "tags"
+      ],
+      "example": {
+        "id": "id",
+        "name": "name1",
+        "description": "desc",
+        "imageUrls": ["https://abc.com/1.png"],
+        "price": 10,
+        "count": 2,
+        "tags": ["tag1"]
+      }
     },
     "Getsizeresponse": {
       "title": "Get size response",
@@ -190,7 +722,10 @@
           "format": "int32"
         }
       },
-      "required": ["size"]
+      "required": ["size"],
+      "example": {
+        "size": 10
+      }
     },
     "Listresponse3": {
       "title": "List response3",
@@ -203,7 +738,10 @@
           }
         }
       },
-      "required": ["tags"]
+      "required": ["tags"],
+      "example": {
+        "tags": ["tag1", "tag2"]
+      }
     }
   }
 }
