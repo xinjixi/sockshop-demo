@@ -38,12 +38,17 @@ jobs:
           echo Analyze spec against rules
           ./.bin/apiregistryctl analyze openapi/catalogue.json
 
-      - name: Diff catalogue spec
+      - name: Diff catalogue spec with latest
         if: always()
         run: |
           echo Diff catalogue spec
           ./.bin/apiregistryctl diff openapi/catalogue.json -s catalogue --latest -o text --fail-on-incompatible
 
+      - name: Diff catalogue spec with v0.0-rev2
+        if: always()
+        run: |
+          echo Diff catalogue spec
+          ./.bin/apiregistryctl diff v0.1-rev1/catalogue.json -s catalogue --version 0.0 --revision 2 -o text --fail-on-incompatible
 
   upload:
     # The type of runner that the job will run on
