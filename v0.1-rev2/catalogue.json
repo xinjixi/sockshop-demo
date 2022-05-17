@@ -358,9 +358,6 @@
               "If-None-Match": {
                 "type": "string"
               }
-            },
-            "schema": {
-              "$ref": "#/definitions/Error"
             }
           },
           "401": {

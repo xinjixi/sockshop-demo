@@ -22,6 +22,7 @@ git diff
 ```
 3. Commit the change. This will trigger the analyze and diff check.
 ```
+git add openapi/catalogue.json
 git commit -m "add delete catalogue api"
 git push origin master
 ```
@@ -39,6 +40,7 @@ git diff
 ```
 7. Commit the change. This will trigger the analyze and diff check.
 ```
+git add openapi/catalogue.json
 git commit -m "fix catalogue api"
 git push origin master
 ```
