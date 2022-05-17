@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "version": "0.0.0",
-    "title": "Catalogue resources",
+    "title": "Service to manage product catalogue",
     "description": "<whitelist>",
     "license": {
       "name": "MIT",
