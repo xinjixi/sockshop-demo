@@ -1,5 +1,15 @@
 # Guide
 
+## Action Required
+
+1. Download the latest cli from the our internal github repo per your OS. Checkout to develop branch. If you use Mac, you can get your binary from cli/bin/darwin/amd64.
+2. Copy the binary to your system PATH, and make it executable. For example:
+```
+cp apiregistryctl /usr/local/bin
+chmod +x /usr/local/bin/apiregistryctl
+```
+3. Clone this repo or fork this repo, make sure you have write access to it. If you forked this repo, you need to enable github actions by going to that tab by yourself.
+
 ## Demo
 
 You can simply follow the below steps to demo in staging without viewing other parts of the document.
