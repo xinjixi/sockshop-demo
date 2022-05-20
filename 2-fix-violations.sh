@@ -1,9 +1,12 @@
 #! /bin/bash
-set -x
+set -ex
 
 cp v0.1-rev2/catalogue.json openapi/
-git diff
+# git diff
+git --no-pager diff
 
 git add openapi/catalogue.json
 git commit -m "fix catalogue api"
-git push origin master
+git push
+
+./trigger-ci-upload.sh v0.1-2
