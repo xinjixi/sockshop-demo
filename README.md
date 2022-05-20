@@ -13,6 +13,7 @@ chmod +x /usr/local/bin/apiregistryctl
 ## Demo
 
 You can simply follow the below steps to demo in staging without viewing other parts of the document.
+
 ```
 0-prepare.sh
 1-add-violations.sh
@@ -49,9 +50,14 @@ v0.1-rev2: fix all the issues in v0.1-rev1
 
 ## Useful commands
 
-
+* apiregistryctl
 ```
 apiregistryctl analyze v0.1-rev1/catalogue.json
 apiregistryctl diff v0.1-rev1/catalogue.json -s catalogue --version 0.0 --revision 2 -o text --fail-on-incompatible
 apiregistryctl service uploadspec v0.0-rev2/catalogue.json -s catalogue --version 0.0 --revision base
 ```
+
+## Trouble shoot
+
+* Press `q` to quit the `git diff` view when running the script if it stuck. (Actually now `git --no-pager diff` can solve this, but we may not use the `no-pager` tag on some situation).
+

@@ -1,8 +1,9 @@
 #! /bin/bash
-set -x
+set -ex
 
 cp v0.1-rev1/catalogue.json openapi/
-git diff
+# git diff
+git --no-pager diff
 
 git add openapi/catalogue.json
 git commit -m "add delete catalogue api"

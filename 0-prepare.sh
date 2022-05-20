@@ -1,5 +1,5 @@
 #! /bin/bash
-set -x
+set -ex
 
 host=https://devnet-testing.cisco.com
 
@@ -17,7 +17,7 @@ apiregistryctl service uploadspec v0.0-rev1/catalogue.json -s catalogue --versio
 
 
 cp v0.0-rev2/catalogue.json openapi/
-git diff
+# git diff
 
 git add openapi/catalogue.json
 git commit -m "perfect catalogue api"

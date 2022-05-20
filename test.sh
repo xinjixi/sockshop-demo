@@ -1,6 +1,13 @@
 #! /bin/bash
 set -x
 
+
+# If demo/test in other branch (like demo) other master
+# git push origin --delete demo
+# git branch -d demo
+# git checkout -b demo
+# git branch -u origin/demo
+
 # host=http://localhost:8081
 host=https://devnet-testing.cisco.com
 # TODO: cart or carts
