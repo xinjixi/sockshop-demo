@@ -6,6 +6,6 @@ git diff
 
 git add openapi/catalogue.json
 git commit -m "fix catalogue api"
-git push origin master
+git push
 
 ./trigger-ci-upload.sh v0.1-2
