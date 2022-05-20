@@ -1,5 +1,5 @@
 #! /bin/bash
-set -ex
+set -x
 
 host=https://devnet-testing.cisco.com
 
