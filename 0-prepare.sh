@@ -1,14 +1,14 @@
 #! /bin/bash
-set -x
+set -ex
 
 host=https://devnet-testing.cisco.com
 
 service=catalogue
 
-apiregistryctl service delete "$service" --debug
+apiregistryctl service delete "$service" --debug || true
 
 printf -v payload '{ "organization_id": "DevNet", "product_tag": "Sock Shop", "name_id": "%s", "title": "demo %s", "description": "%s API", "contact": {} }' "$service" "$service" "$service"
-apiregistryctl -H "$host" service create --data "$payload" --debug
+apiregistryctl -H "$host" service create --data "$payload" --debug || true
 
 apiregistryctl -H "$host" service list | grep catalogue
 
