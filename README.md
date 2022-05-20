@@ -16,9 +16,7 @@ You can simply follow the below steps to demo in staging without viewing other p
 ```
 0-prepare.sh
 1-add-violations.sh
-2-push-tag-v0.1-1.sh
-3-fix-violations.sh
-4-push-tag-v0.1-2.sh
+2-fix-violations.sh
 ```
 
 ## folders
@@ -36,25 +34,15 @@ v0.1-rev2: fix all the issues in v0.1-rev1
 ```
 ./0-prepare.sh
 ```
-1. Change the catalogue.json in openapi folder by copying the same files in other version folders. This add some violations. Commit the change. This will trigger the analyze and diff check.
+1. Change the catalogue.json in openapi folder by copying the same files in other version folders. This add some violations. Commit the change. This will trigger the analyze and upload spec.
 ```
 ./1-add-violations.sh
 ```
     Go the github workflow to view the CI result.
-2. Push new git tag to trigger upload spec to server.
-```
-./2-push-tag-v0.1-1.sh
-```
-    Go the github workflow to view the CI result.
     Then go to UI to view the uploaded version.
-3. Fix the broken spec and commit change.
+2. Fix the broken spec and commit change.
 ```
-./3-fix-violations.sh
-```
-    Go the github workflow to view the CI result.
-4. Push new git tag to trigger upload spec to server.
-```
-./4-push-tag-v0.1-2.sh
+./2-fix-violations.sh
 ```
     Go the github workflow to view the CI result.
     Then go to UI to view the uploaded version.
