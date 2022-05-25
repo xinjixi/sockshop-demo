@@ -197,6 +197,94 @@
         }
       }
     },
+    "/catalogue/personalize": {
+      "get": {
+        "description": "Get personalize data per vendor's blacklist",
+        "operationId": "Get-personalize",
+        "tags": ["Sample"],
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "produces": ["application/json;charset=UTF-8"],
+        "parameters": [
+          {
+            "description": "query",
+            "in": "query",
+            "name": "max",
+            "type": "number"
+          },
+          {
+            "description": "query",
+            "in": "query",
+            "name": "offset",
+            "type": "number"
+          },
+          {
+            "description": "query",
+            "in": "query",
+            "name": "sort",
+            "type": "string"
+          },
+          {
+            "description": "query",
+            "in": "query",
+            "name": "order",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "TRACKINGID": {
+                "type": "string"
+              },
+              "Date": {
+                "type": "string"
+              },
+              "Link": {
+                "type": "string"
+              },
+              "ETag": {
+                "type": "string"
+              },
+              "If-Match": {
+                "type": "string"
+              },
+              "If-None-Match": {
+                "type": "string"
+              }
+            },
+            "schema": {
+              "type": "object",
+              "properties": {
+                "items": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Listresponse"
+                  }
+                }
+              },
+              "example": {
+                "item": [
+                  {
+                    "id": "id",
+                    "name": "name1",
+                    "description": "desc",
+                    "imageUrl": ["https://abc.com/1.png"],
+                    "price": 10,
+                    "count": 2,
+                    "tag": ["tag1"]
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
     "/catalogue/{id}": {
       "get": {
         "tags": ["Sample"],
@@ -312,52 +400,6 @@
             },
             "schema": {
               "$ref": "#/definitions/Error"
-            }
-          }
-        }
-      },
-      "delete": {
-        "tags": ["Sample"],
-        "description": "delete the item in the blacklist",
-        "operationId": "delete-an-item",
-        "security": [
-          {
-            "BearerAuth": []
-          }
-        ],
-        "produces": ["application/json; charset=UTF-8"],
-        "parameters": [
-          {
-            "description": "catalogue id",
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "x-example": "a0a4f044-b040-410d-8ead-4de0446aec7e"
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "No Content",
-            "headers": {
-              "TRACKINGID": {
-                "type": "string"
-              },
-              "Date": {
-                "type": "string"
-              },
-              "Link": {
-                "type": "string"
-              },
-              "ETag": {
-                "type": "string"
-              },
-              "If-Match": {
-                "type": "string"
-              },
-              "If-None-Match": {
-                "type": "string"
-              }
             }
           }
         }
